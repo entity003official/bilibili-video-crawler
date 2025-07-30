@@ -1,0 +1,89 @@
+# Git ignore file for Bilibili Video Crawler
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+PIPFILE.lock
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Selenium and WebDriver
+chromedriver.exe
+geckodriver.exe
+*.log
+
+# Output files
+*.csv
+*.json
+*.xlsx
+debug_*.html
+bilibili_videos_*.csv
+bilibili_videos_*.json
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+# Sensitive information
+config_private.py
+cookies.txt
+session_data/
+
+# Chrome user data (contains login info)
+User Data/
+
+# Test files
+test_output/
+debug_output/
+
+# Development files
+GITHUB_NAMES.md
