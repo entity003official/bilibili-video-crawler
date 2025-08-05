@@ -56,19 +56,25 @@ def safe_crawl_bilibili():
         # Chrome配置
         options = Options()
         
-        # 使用用户数据目录
-        user_data_dir = f"C:/Users/{os.getenv('USERNAME', 'Administrator')}/AppData/Local/Google/Chrome/User Data"
-        if os.path.exists(user_data_dir):
-            print(f"✓ 使用Chrome用户数据保持登录状态")
-            options.add_argument(f'--user-data-dir={user_data_dir}')
-            options.add_argument('--profile-directory=Default')
+        # 使用现有的Chrome用户数据目录，这样可以保持登录状态
+        # 注意：请先手动登录Chrome浏览器并访问B站
+        options.add_argument('--user-data-dir=C:/Users/Administrator/AppData/Local/Google/Chrome/User Data')
+        options.add_argument('--profile-directory=Default')  # 使用默认配置文件
         
-        options.add_argument('--disable-blink-features=AutomationControlled')
+        # 如果仍需要无头模式，可以启用下面这行（但建议先测试有头模式）
+        # options.add_argument('--headless')  
+        
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
-        options.add_argument('--window-size=1366,768')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--window-size=1920,1080')
+        options.add_argument('--disable-blink-features=AutomationControlled')  # 避免被检测为自动化
+        options.add_experimental_option("excludeSwitches", ["enable-automation"])  # 移除自动化标识
+        options.add_experimental_option('useAutomationExtension', False)  # 禁用自动化扩展
+        options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
         
         print("正在启动Chrome浏览器...")
+        print("✓ 使用Chrome用户数据保持登录状态")
         
         try:
             service = Service(ChromeDriverManager().install())

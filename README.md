@@ -1,15 +1,18 @@
 # 🎬 Bilibili Video Crawler
 
-[![Python](https://img.shields.io/badge/Python-3.6+-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![Asyncio](https://img.shields.io/badge/Asyncio-Supported-brightgreen.svg)](https://docs.python.org/3/library/asyncio.html)
 [![Selenium](https://img.shields.io/badge/Selenium-4.0+-green.svg)](https://selenium.dev/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-一个功能强大的B站UP主视频批量爬取工具，基于Selenium实现，支持批量爬取、自动登录、多种输出格式等功能。
+一个功能强大的B站UP主视频批量爬取工具，支持**无浏览器异步API爬取**和传统Selenium浏览器爬取两种模式，具备强大的反爬虫能力和多种输出格式。
 
 ## ✨ 功能特点
 
+- 🌟 **异步API爬取**: 基于MediaCrawler设计思路，无需Chrome浏览器，速度快，资源占用少
+- 🛡️ **强大反爬虫**: 多重User-Agent轮换、智能频率控制、备用方案自动切换
 - 🚀 **批量爬取**: 支持批量爬取UP主的所有视频
-- 🔐 **自动登录**: 使用Chrome用户数据保持登录状态
+- 🔐 **自动登录**: 使用Chrome用户数据保持登录状态（Selenium模式）
 - 📊 **多种格式**: 支持CSV、JSON等多种输出格式
 - 👥 **批量UP主**: 支持同时爬取多个UP主
 - 🔄 **智能去重**: 自动去重，避免重复爬取
@@ -17,26 +20,68 @@
 - 🛡️ **安全退出**: 支持Ctrl+C安全中断
 - 🎯 **错误处理**: 完善的错误处理和重试机制
 
+## 🎯 推荐使用方式
+
+### 方式1：异步API爬取（推荐⭐）
+
+**优点**: 无需浏览器、速度快、稳定性高、资源占用少
+
+```bash
+python spider_bilibili.py
+```
+
+**特性**:
+- ✅ 无需Chrome浏览器，直接调用B站API
+- ✅ 异步并发处理，速度提升显著
+- ✅ 智能反爬虫机制，突破频率限制
+- ✅ 多重备用方案，确保稳定运行
+- ✅ 自动保存为CSV格式，便于后续分析
+
+### 方式2：传统Selenium爬取
+
+**适用场景**: API失效时的备用方案，或需要模拟真实用户行为
+
+```bash
+python run_crawler.py
+```
+
 ## 环境要求
 
-1. Python 3.6+
+### 异步API模式（推荐）
+```bash
+pip install aiohttp asyncio beautifulsoup4 pandas
+```
+
+### Selenium模式
+1. Python 3.8+
 2. 安装依赖包：
    ```bash
-   pip install selenium beautifulsoup4 requests
+   pip install selenium beautifulsoup4 requests aiohttp pandas
    ```
 3. 安装Chrome浏览器
 4. 下载ChromeDriver（或使用自动管理工具）
 
 ## 文件说明
 
-### 核心文件
-- `bilibili_batch_crawler.py` - 主要的爬虫模块，包含所有核心功能
-- `spider_bilibili.py` - 简化版爬虫脚本，适合快速测试
+### 🌟 核心异步爬虫
+- `spider_bilibili.py` - **主推荐文件**，基于MediaCrawler设计的异步API爬虫
+  - ✅ 无浏览器依赖，纯API调用
+  - ✅ 智能反爬虫，多重备用方案
+  - ✅ 异步处理，性能优异
+  - ✅ 自动生成带时间戳的CSV文件
 
-### 使用脚本
+### 🔧 传统Selenium版本
+- `bilibili_batch_crawler.py` - 传统的Selenium爬虫模块
 - `run_crawler.py` - 单个UP主爬取脚本，适合新手使用
 - `batch_crawl_multiple.py` - 批量爬取多个UP主的脚本
 - `config.py` - 配置文件，用于设置多个UP主信息
+
+### 📊 最新爬取结果示例
+最新成功爬取数据（2025-08-05）：
+- **总视频数**: 60个
+- **总播放量**: 11,151,208次  
+- **平均播放量**: 185,853次
+- **输出文件**: `bilibili_videos_async_20250805_101559.csv`
 
 ## 使用方法
 
@@ -152,10 +197,16 @@ pip install webdriver-manager
 
 ## 更新日志
 
-- v1.0: 基础爬取功能
-- v1.1: 添加批量爬取和多种输出格式
-- v1.2: 增强标题获取和错误处理
+- **v2.0 (2025-08-05)**: 🌟 **重大更新**
+  - ✅ 新增异步API爬虫，无需Chrome浏览器
+  - ✅ 基于MediaCrawler设计思路，性能大幅提升
+  - ✅ 智能反爬虫机制，突破B站风控限制
+  - ✅ 多重备用方案，确保爬取稳定性
+  - ✅ 自动生成时间戳文件名，便于管理
 - v1.3: 支持多UP主批量爬取
+- v1.2: 增强标题获取和错误处理
+- v1.1: 添加批量爬取和多种输出格式
+- v1.0: 基础爬取功能
 
 ## 技术支持
 
