@@ -1,6 +1,36 @@
 """
-B站up主视频批量爬取工具
-支持自定义爬取数量、保存格式等
+B站Selenium批量爬虫核心模块
+============================
+
+功能说明：
+- 🌐 浏览器驱动：基于Selenium + Chrome的传统爬虫方案
+- 🎯 批量爬取：支持大规模UP主视频数据采集
+- 📊 多格式输出：支持CSV、JSON等多种数据格式
+- 🔧 高度可配：支持自定义参数和爬取策略
+
+核心功能：
+1. fetch_videos_selenium() - Selenium爬虫主函数
+2. save_videos_to_csv() - CSV格式数据保存
+3. save_videos_to_json() - JSON格式数据保存
+4. setup_driver() - 浏览器驱动配置
+
+适用场景：
+- API爬虫失效时的备用方案
+- 需要渲染JavaScript的页面
+- 需要模拟真实用户行为的场景
+
+技术特点：
+- 支持无头模式运行
+- 自动处理页面加载等待
+- 完善的错误恢复机制
+
+依赖要求：
+- Chrome浏览器
+- ChromeDriver
+- selenium库
+
+作者：GitHub Copilot
+状态：稳定版本，备用推荐
 """
 import requests
 from bs4 import BeautifulSoup

@@ -61,20 +61,39 @@ pip install aiohttp asyncio beautifulsoup4 pandas
 3. 安装Chrome浏览器
 4. 下载ChromeDriver（或使用自动管理工具）
 
-## 文件说明
+## 📁 项目文件结构
 
-### 🌟 核心异步爬虫
-- `spider_bilibili.py` - **主推荐文件**，基于MediaCrawler设计的异步API爬虫
-  - ✅ 无浏览器依赖，纯API调用
-  - ✅ 智能反爬虫，多重备用方案
-  - ✅ 异步处理，性能优异
-  - ✅ 自动生成带时间戳的CSV文件
+### 🌟 核心爬虫文件
+- `spider_bilibili.py` ⭐ - **主推荐**，异步API爬虫，无浏览器依赖
+- `run_crawler.py` - Selenium版本，Chrome浏览器爬虫（备用方案）
+- `batch_crawl_multiple.py` - 批量爬取多个UP主
+- `bilibili_batch_crawler.py` - Selenium爬虫核心模块
 
-### 🔧 传统Selenium版本
-- `bilibili_batch_crawler.py` - 传统的Selenium爬虫模块
-- `run_crawler.py` - 单个UP主爬取脚本，适合新手使用
-- `batch_crawl_multiple.py` - 批量爬取多个UP主的脚本
-- `config.py` - 配置文件，用于设置多个UP主信息
+### ⚙️ 配置和工具
+- `config.py` - 多UP主配置管理
+- `clean_data.py` - 数据清洗和去重工具
+- `monitor_progress.py` - 爬取进度监控工具
+- `requirements.txt` - 项目依赖包列表
+
+### 🚀 启动脚本
+- `run_crawler.bat` - Windows一键启动脚本
+- `run_safe_crawler.bat` - 安全模式启动脚本
+
+### 📚 文档文件
+- `README.md` - 项目主文档（当前文件）
+- `QUICKSTART.md` - 5分钟快速上手指南
+- `FILE_GUIDE.md` - 详细的文件功能说明
+
+### 📊 示例数据
+- `bilibili_videos_async_*.csv` - 异步爬虫生成的数据文件
+- `bilibili_videos.csv` - 通用数据文件
+
+> 💡 **快速开始**: 查看 [FILE_GUIDE.md](FILE_GUIDE.md) 了解每个文件的详细功能
+
+### 🎯 推荐使用优先级
+1. **spider_bilibili.py** (首选) - 异步API，高性能
+2. **run_crawler.py** (备用) - 浏览器版本，兼容性好
+3. **batch_crawl_multiple.py** (批量) - 多UP主同时爬取
 
 ### 📊 最新爬取结果示例
 最新成功爬取数据（2025-08-05）：

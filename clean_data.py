@@ -1,5 +1,26 @@
 """
-数据去重和清理工具
+B站视频数据清洗工具
+==================
+
+功能说明：
+- 🧹 数据去重：基于BV号去除重复视频记录
+- 📊 格式标准化：统一数据格式，修复异常值
+- 🔧 数据验证：检查数据完整性，标记异常记录
+- 📁 批量处理：支持处理多个CSV文件
+
+主要功能：
+1. remove_duplicates_from_csv() - CSV文件去重
+2. clean_video_data() - 数据清洗和验证
+3. merge_csv_files() - 合并多个数据文件
+4. generate_summary_report() - 生成数据统计报告
+
+使用场景：
+- 合并多次爬取的数据
+- 清理重复和异常数据
+- 生成最终的分析数据集
+
+作者：GitHub Copilot
+更新：2025-08-05
 """
 import csv
 import pandas as pd
