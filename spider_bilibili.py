@@ -299,11 +299,19 @@ def save_videos_to_csv(videos, filename="bilibili_videos.csv"):
     print(f"已保存 {len(videos)} 个视频到 {filename}")
 
 async def main():
+    """
+    主程序入口函数
+    
+    功能：
+    - 配置目标UP主和爬取参数
+    - 执行异步视频数据爬取
+    - 生成CSV格式的分析报告
+    """
     # 在此填写up主空间url
     up_url = "https://space.bilibili.com/93796936/upload/video"
     
     # 设置要爬取的视频数量
-    max_videos = 100  # 先降低数量测试
+    max_videos = 100  # 可根据需要调整数量
     
     print("=" * 60)
     print("🎬 B站UP主视频爬取工具 (MediaCrawler异步版本)")
