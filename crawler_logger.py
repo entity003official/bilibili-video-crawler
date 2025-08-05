@@ -93,6 +93,14 @@ class CrawlerLogger:
     def warning_with_emoji(self, message):
         """记录带表情符号的警告"""
         self.warning(f"⚠️ {message}")
+    
+    def critical(self, message):
+        """记录严重错误"""
+        self.error(f"🚨 CRITICAL: {message}")
+    
+    def performance_log(self, operation, duration):
+        """记录性能日志"""
+        self.info(f"⏱️ 性能统计 - {operation}: {duration:.2f}秒")
 
 # 全局日志实例
 crawler_logger = CrawlerLogger()
