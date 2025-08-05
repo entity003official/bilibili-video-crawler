@@ -85,6 +85,14 @@ class CrawlerLogger:
     def network_error(self, url, error):
         """记录网络错误"""
         self.error(f"网络错误 - URL: {url}, 错误: {str(error)}")
+    
+    def success(self, message):
+        """记录成功操作"""
+        self.info(f"✅ {message}")
+    
+    def warning_with_emoji(self, message):
+        """记录带表情符号的警告"""
+        self.warning(f"⚠️ {message}")
 
 # 全局日志实例
 crawler_logger = CrawlerLogger()
