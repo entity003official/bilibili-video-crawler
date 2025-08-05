@@ -48,11 +48,12 @@ async def fetch_videos_api(url, max_videos=1000):
     # 提取UID
     uid_match = re.search(r'space\.bilibili\.com/(\d+)', url)
     if not uid_match:
-        print("无法从URL中提取UID")
+        print("❌ 错误：无法从URL中提取UID，请检查UP主链接格式")
+        print("💡 正确格式示例：https://space.bilibili.com/123456789")
         return []
     
     uid = uid_match.group(1)
-    print(f"UP主UID: {uid}")
+    print(f"✅ UP主UID: {uid}")
     
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
