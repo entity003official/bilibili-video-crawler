@@ -349,7 +349,14 @@ async def main():
         print("=" * 60)
         print(f"总视频数量: {len(videos)}")
         print(f"保存文件: {csv_filename}")
-        print(f"总播放量: {sum(v.get('play', 0) for v in videos):,}")
+        total_views = sum(v.get('play', 0) for v in videos)
+        print(f"总播放量: {total_views:,}")
+        print(f"平均播放量: {total_views // len(videos):,}" if videos else "平均播放量: 0")
+        
+        # 找出播放量最高的视频
+        if videos:
+            top_video = max(videos, key=lambda x: x.get('play', 0))
+            print(f"🎯 最热门视频: {top_video['title'][:30]}... (播放量: {top_video.get('play', 0):,})")
         
         # 显示前5个视频作为示例
         print("\n📋 前5个视频示例:")
